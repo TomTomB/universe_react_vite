@@ -1,0 +1,22 @@
+{
+  "name": "@universe/client-main",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "electron-updater": "4.6.2"
+  },
+  "devDependencies": {
+    "electron": "16.0.1",
+    "electron-builder": "^22.13.1"
+  },
+  "build": {
+    "appId": "bornholdt-digital.universe",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

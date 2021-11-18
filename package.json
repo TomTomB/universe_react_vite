@@ -5,6 +5,9 @@
   "author": "Tom-Rune Bornholdt",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "commit": "npx git-cz"
+  },
   "workspaces": [
     "packages/**"
   ]

@@ -1,6 +1,18 @@
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, shell, protocol } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
+import { Logger } from './util/logger';
+import * as Protocol from './util/protocol';
+
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: Protocol.scheme,
+    privileges: {
+      standard: true,
+      secure: true,
+    },
+  },
+]);
 
 const isSingleInstance = app.requestSingleInstanceLock();
 
@@ -16,70 +28,68 @@ if (import.meta.env.MODE === 'development') {
   app
     .whenReady()
     .then(() => import('electron-devtools-installer'))
-    .then(({ default: installExtension, VUEJS3_DEVTOOLS }) =>
-      installExtension(VUEJS3_DEVTOOLS, {
-        loadExtensionOptions: {
-          allowFileAccess: true,
-        },
-      }),
+    .then(
+      ({ default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS }) =>
+        installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS], {
+          loadExtensionOptions: {
+            allowFileAccess: true,
+          },
+        }),
     )
-    .catch((e) => console.error('Failed install extension:', e));
+    .catch((e) => Logger.error('Failed install extension:', e));
 }
 
 let mainWindow: BrowserWindow | null = null;
 
 const createWindow = async () => {
+  if (app.isPackaged) {
+    protocol.registerFileProtocol(Protocol.scheme, Protocol.requestHandler);
+  }
+
   mainWindow = new BrowserWindow({
-    show: false, // Use 'ready-to-show' event to show window
+    show: false,
+    width: 1280,
+    height: 720,
+    resizable: false,
+    backgroundColor: '#010a13',
+    fullscreenable: false,
+    roundedCorners: false,
+    center: true,
+    frame: false,
     webPreferences: {
+      sandbox: true,
+      contextIsolation: true,
+      devTools: !app.isPackaged,
       nativeWindowOpen: true,
+      disableBlinkFeatures: 'Auxclick',
       preload: import.meta.env.DEV
         ? join(__dirname, '../preload/index.cjs')
         : join(__dirname, './preload/index.cjs'),
     },
   });
 
-  /**
-   * If you install `show: true` then it can cause issues when trying to close the window.
-   * Use `show: false` and listener events `ready-to-show` to fix these issues.
-   *
-   * @see https://github.com/electron/electron/issues/25012
-   */
   mainWindow.on('ready-to-show', () => {
     mainWindow?.show();
 
-    mainWindow?.webContents.openDevTools();
-
-    // if (import.meta.env.MODE === 'development') {
-    //   mainWindow?.webContents.openDevTools();
-    // }
+    if (import.meta.env.DEV) {
+      mainWindow?.webContents.openDevTools({ mode: 'detach' });
+    }
   });
 
-  /**
-   * External hyperlinks open in the default browser.
-   *
-   * @see https://stackoverflow.com/a/67409223
-   */
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url);
     return { action: 'deny' };
   });
 
-  /**
-   * URL for main window.
-   * Vite dev server for development.
-   * `file://../renderer/index.html` for production and test
-   */
   const pageUrl =
     import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL !== undefined
       ? import.meta.env.VITE_DEV_SERVER_URL
-      : new URL('./dist/renderer/index.html', 'file://' + __dirname).toString();
+      : new URL('./renderer/index.html', `${Protocol.scheme}://`).toString();
 
   await mainWindow.loadURL(pageUrl);
 };
 
 app.on('second-instance', () => {
-  // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
     if (mainWindow.isMinimized()) mainWindow.restore();
     mainWindow.focus();
@@ -95,13 +105,19 @@ app.on('window-all-closed', () => {
 app
   .whenReady()
   .then(createWindow)
-  .catch((e) => console.error('Failed create window:', e));
+  .catch((e) => Logger.error('Failed create window:', e));
 
-// Auto-updates
 if (import.meta.env.PROD) {
   app
     .whenReady()
     .then(() => import('electron-updater'))
     .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
-    .catch((e) => console.error('Failed check updates:', e));
+    .catch((e) => Logger.error('Failed check updates:', e));
 }
+
+app.on('web-contents-created', (_event, contents) => {
+  contents.on('will-redirect', (contentsEvent, navigationUrl) => {
+    shell.openExternal(navigationUrl);
+    contentsEvent.preventDefault();
+  });
+});

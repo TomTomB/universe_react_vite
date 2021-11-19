@@ -10,7 +10,8 @@
     "update-electron-vendors": "node ../scripts/update-electron-vendors.js"
   },
   "dependencies": {
-    "electron-updater": "4.6.2"
+    "electron-updater": "4.6.2",
+    "electron-log": "4.4.1"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "2.2.0",

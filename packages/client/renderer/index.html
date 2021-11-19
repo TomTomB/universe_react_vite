@@ -6,10 +6,24 @@
       http-equiv="Content-Security-Policy"
       content="script-src 'self' blob:"
     />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Vite App</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Universe</title>
   </head>
-  <body>
+  <body
+    style="
+      border-width: 1px;
+      border-top-width: 2px;
+      border-color: #1e282d;
+      border-top-color: #785a28;
+      border-style: solid;
+      height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    "
+  >
     <div id="universe-app"></div>
     <script src="./src/index.tsx" type="module"></script>
   </body>

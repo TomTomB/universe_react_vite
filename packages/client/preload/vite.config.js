@@ -16,13 +16,12 @@ export default defineConfig({
   envDir: process.cwd(),
   resolve: {
     alias: {
-      '/@/': SRC_PATH,
+      '@universe/client-preload': SRC_PATH,
     },
   },
   build: {
     sourcemap: process.env.MODE === 'development' ? 'inline' : false,
     target: `chrome${chrome}`,
-    outDir: 'dist',
     assetsDir: '.',
     minify: process.env.MODE !== 'development',
     lib: {
@@ -32,6 +31,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['electron', ...builtinModules],
       output: {
+        dir: '../../../dist/client/preload',
         entryFileNames: '[name].cjs',
       },
     },

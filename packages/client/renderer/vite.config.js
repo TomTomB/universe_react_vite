@@ -23,10 +23,13 @@ export default defineConfig({
   build: {
     sourcemap: process.env.MODE === 'development' ? true : false,
     target: `chrome${chrome}`,
-    outDir: 'dist',
     assetsDir: '.',
+    minify: process.env.MODE !== 'development',
     rollupOptions: {
       external: [...builtinModules],
+      output: {
+        dir: '../../../dist/client/renderer',
+      },
     },
     emptyOutDir: true,
     brotliSize: false,

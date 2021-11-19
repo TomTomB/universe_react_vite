@@ -18,7 +18,6 @@ export default defineConfig({
   build: {
     sourcemap: process.env.MODE === 'development' ? 'inline' : false,
     target: `node${node}`,
-    outDir: 'dist',
     assetsDir: '.',
     minify: process.env.MODE !== 'development',
     lib: {
@@ -28,6 +27,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['electron', 'electron-devtools-installer', ...builtinModules],
       output: {
+        dir: '../../../dist/client/main',
         entryFileNames: '[name].cjs',
       },
     },

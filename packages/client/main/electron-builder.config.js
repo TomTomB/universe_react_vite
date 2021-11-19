@@ -7,24 +7,31 @@ if (process.env.VITE_APP_VERSION === undefined) {
   }.${now.getUTCDate()}-${now.getUTCHours() * 60 + now.getUTCMinutes()}`;
 }
 
+const DIST_PATH = path.resolve(__dirname, '..', '..', '..', 'dist');
+
 /**
  * @type {import('electron-builder').Configuration}
  * @see https://www.electron.build/configuration/configuration
  */
 const config = {
   directories: {
-    output: '../../../dist/client',
+    output: '../../../dist/client/bin',
     buildResources: 'buildResources',
   },
   files: [
-    '**/dist/**',
+    'package.json',
     {
-      from: path.resolve(__dirname, '..', 'preload', 'dist'),
+      from: `${DIST_PATH}/client/main`,
+      to: 'dist',
+      filter: ['**/*'],
+    },
+    {
+      from: `${DIST_PATH}/client/preload`,
       to: 'dist/preload',
       filter: ['**/*'],
     },
     {
-      from: path.resolve(__dirname, '..', 'renderer', 'dist'),
+      from: `${DIST_PATH}/client/renderer`,
       to: 'dist/renderer',
       filter: ['**/*'],
     },

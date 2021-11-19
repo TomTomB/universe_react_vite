@@ -1,7 +1,6 @@
-const { writeFile, readFile } = require('fs/promises');
+const { writeFile } = require('fs/promises');
 const { execSync } = require('child_process');
 const electron = require('electron');
-const path = require('path');
 
 /**
  * Returns versions of electron vendors
@@ -38,7 +37,7 @@ function updateVendors() {
       formattedJSON({
         chrome: chromeMajorVersion,
         node: nodeMajorVersion,
-      })
+      }),
     ),
 
     // readFile(packageJSONPath).then(JSON.parse).then((packageJSON) => {

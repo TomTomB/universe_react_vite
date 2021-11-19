@@ -10,5 +10,5 @@ ReactDOM.render(
       <h1>Hello world</h1>
     </Suspense>
   </StrictMode>,
-  document.getElementById('universe-app')
+  document.getElementById('universe-app'),
 );

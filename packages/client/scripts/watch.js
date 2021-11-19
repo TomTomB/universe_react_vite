@@ -75,7 +75,7 @@ const setupMainPackageWatcher = (viteDevServer) => {
         spawnProcess = null;
       }
 
-      spawnProcess = spawn(String(electronPath), ['.']);
+      spawnProcess = spawn(String(electronPath), ['../../../dist/client']);
 
       spawnProcess.stdout.on(
         'data',
@@ -110,8 +110,21 @@ const setupPreloadPackageWatcher = (viteDevServer) => {
   });
 };
 
+const writePackageJson = () => {
+  const { writeFileSync } = require('fs-extra');
+
+  const packageJson = { main: 'main/index.cjs' };
+
+  writeFileSync(
+    path.resolve(packagesPath, '../dist/client/package.json'),
+    JSON.stringify(packageJson, null, 2)
+  );
+};
+
 (async () => {
   try {
+    writePackageJson();
+
     const viteDevServer = await createServer({
       ...sharedConfig,
       configFile: `${packagesPath}/client/renderer/vite.config.js`,

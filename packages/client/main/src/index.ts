@@ -33,7 +33,9 @@ const createWindow = async () => {
     show: false, // Use 'ready-to-show' event to show window
     webPreferences: {
       nativeWindowOpen: true,
-      preload: join(__dirname, './preload/index.cjs'),
+      preload: import.meta.env.DEV
+        ? join(__dirname, '../preload/index.cjs')
+        : join(__dirname, './preload/index.cjs'),
     },
   });
 
@@ -69,8 +71,7 @@ const createWindow = async () => {
    * `file://../renderer/index.html` for production and test
    */
   const pageUrl =
-    import.meta.env.MODE === 'development' &&
-    import.meta.env.VITE_DEV_SERVER_URL !== undefined
+    import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL !== undefined
       ? import.meta.env.VITE_DEV_SERVER_URL
       : new URL('./dist/renderer/index.html', 'file://' + __dirname).toString();
 

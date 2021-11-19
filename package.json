@@ -6,9 +6,17 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "serve:client": "yarn --cwd packages/client/main start",
+    "build:client": "cross-env MODE=production yarn --cwd packages/client/main build",
+    "package:client": "cross-env MODE=production yarn --cwd packages/client/main package",
+    "update-electron-vendors": "yarn --cwd packages/client/main update-electron-vendors",
     "commit": "npx git-cz"
   },
   "workspaces": [
     "packages/**"
-  ]
+  ],
+  "devDependencies": {
+    "vite": "^2.6.14",
+    "cross-env": "7.0.3"
+  }
 }

@@ -35,4 +35,4 @@ jobs:
 
       - name: Run Lerna
         run: |
-          cross-env GH_TOKEN=${{ secrets.GH_PERSONAL_TOKEN }} yarn release -y
+          yarn cross-env GH_TOKEN=${{ secrets.GH_PERSONAL_TOKEN }} yarn release -y

@@ -63,5 +63,7 @@ jobs:
           yarn build:client
 
       - name: Publish releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           yarn package:publish:client

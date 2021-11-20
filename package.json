@@ -1,6 +1,6 @@
 {
   "name": "@universe/platform",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Universe monorepo",
   "author": "Tom-Rune Bornholdt",
   "license": "MIT",
@@ -24,8 +24,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.4.1",
-    "typescript": "^4.5.2",
-    "vite": "^2.6.14"
+    "prettier": "2.4.1",
+    "typescript": "4.5.2",
+    "vite": "2.6.14"
   }
 }

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/TomTomB/universe/compare/v0.2.1...v0.2.2) (2021-11-20)
+
+**Note:** Version bump only for package @universe/client-preload
+
+
+
+
+
 ## 0.2.1 (2021-11-20)
 
 

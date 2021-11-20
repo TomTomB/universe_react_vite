@@ -5,6 +5,11 @@ on:
     tags:
       - v*
 
+on:
+  push:
+    tags:
+      - v*
+
 jobs:
   publish:
     runs-on: ${{ matrix.os }}
@@ -15,7 +20,9 @@ jobs:
 
     steps:
       - name: Checkout git repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Set git config
         run: |

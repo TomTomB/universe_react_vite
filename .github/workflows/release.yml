@@ -16,6 +16,11 @@ jobs:
       - name: Checkout git repo
         uses: actions/checkout@v2
 
+      - name: Set git config
+        run: |
+          git config --global user.email "bot@github.com"
+          git config --global user.name "GitHub Bot"
+
       - name: Install Node, NPM and Yarn
         uses: actions/setup-node@v2
         with:

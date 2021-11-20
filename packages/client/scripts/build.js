@@ -15,6 +15,16 @@ const packagesConfigs = [
   `${packagesPath}/client/renderer/vite.config.js`,
 ];
 
+const buildSplash = () => {
+  const { copySync } = require('fs-extra');
+
+  copySync(
+    path.resolve(packagesPath, 'client/splash'),
+    path.resolve(packagesPath, '../dist/client/splash'),
+    { recursive: true },
+  );
+};
+
 /**
  * Run `vite build` for config file
  */
@@ -23,6 +33,8 @@ const buildByConfig = (configFile) => build({ configFile, mode });
   try {
     const totalTimeLabel = 'Total bundling time';
     console.time(totalTimeLabel);
+
+    buildSplash();
 
     for (const packageConfigPath of packagesConfigs) {
       const consoleGroupName = `${dirname(packageConfigPath)}/`;

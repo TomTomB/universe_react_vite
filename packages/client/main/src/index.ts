@@ -54,6 +54,7 @@ const createWindow = async () => {
     backgroundColor: '#010a13',
     fullscreenable: false,
     roundedCorners: false,
+    // transparent: true,
     center: true,
     frame: false,
     webPreferences: {
@@ -68,8 +69,33 @@ const createWindow = async () => {
     },
   });
 
-  mainWindow.on('ready-to-show', () => {
-    mainWindow?.show();
+  const splash = new BrowserWindow({
+    width: 500,
+    height: 230,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
+    fullscreenable: false,
+    center: true,
+    resizable: false,
+    webPreferences: {
+      devTools: !app.isPackaged,
+      sandbox: true,
+      contextIsolation: true,
+      disableBlinkFeatures: 'Auxclick',
+    },
+  });
+
+  mainWindow.webContents.once('did-finish-load', () => {
+    splash.destroy();
+
+    if (!mainWindow) {
+      Logger.error('Main window is null');
+      return;
+    }
+
+    mainWindow.show();
+    mainWindow.focus();
 
     if (import.meta.env.DEV) {
       mainWindow?.webContents.openDevTools({ mode: 'detach' });
@@ -81,12 +107,17 @@ const createWindow = async () => {
     return { action: 'deny' };
   });
 
-  const pageUrl =
+  const mainWindowUrl =
     import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL !== undefined
       ? import.meta.env.VITE_DEV_SERVER_URL
       : new URL('./renderer/index.html', `${Protocol.scheme}://`).toString();
 
-  await mainWindow.loadURL(pageUrl);
+  const splashWindowUrl = import.meta.env.DEV
+    ? new URL(join(__dirname, '../splash/index.html'), 'file://').toString()
+    : new URL('./splash/index.html', `${Protocol.scheme}://`).toString();
+
+  splash.loadURL(splashWindowUrl);
+  mainWindow.loadURL(mainWindowUrl);
 };
 
 app.on('second-instance', () => {

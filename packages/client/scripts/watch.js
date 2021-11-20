@@ -121,9 +121,20 @@ const writePackageJson = () => {
   );
 };
 
+const buildSplash = () => {
+  const { copySync } = require('fs-extra');
+
+  copySync(
+    path.resolve(packagesPath, 'client/splash'),
+    path.resolve(packagesPath, '../dist/client/splash'),
+    { recursive: true },
+  );
+};
+
 (async () => {
   try {
     writePackageJson();
+    buildSplash();
 
     const viteDevServer = await createServer({
       ...sharedConfig,

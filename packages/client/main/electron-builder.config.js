@@ -31,6 +31,11 @@ const config = {
       filter: ['**/*'],
     },
     {
+      from: `${DIST_PATH}/client/splash`,
+      to: 'dist/splash',
+      filter: ['**/*'],
+    },
+    {
       from: `${DIST_PATH}/client/renderer`,
       to: 'dist/renderer',
       filter: ['**/*'],

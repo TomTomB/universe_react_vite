@@ -35,7 +35,4 @@ jobs:
 
       - name: Run Lerna
         run: |
-          yarn release -y
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PERSONAL_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_PERSONAL_TOKEN }}
+          cross-env GH_TOKEN=${{ secrets.GH_PERSONAL_TOKEN }} yarn release -y

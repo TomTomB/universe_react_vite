@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/TomTomB/universe/compare/v0.2.5...v0.2.6) (2021-11-20)
+
+
+### Bug Fixes
+
+* 🐛 add hg token to release ([fb38a0c](https://github.com/TomTomB/universe/commit/fb38a0c44a4fca810bbd6e82a7f683fc1db600ba))
+
+
+
+
+
 ## [0.2.5](https://github.com/TomTomB/universe/compare/v0.2.4...v0.2.5) (2021-11-20)
 
 

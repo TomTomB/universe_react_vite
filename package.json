@@ -9,6 +9,7 @@
     "serve:client": "yarn --cwd packages/client/main start",
     "build:client": "cross-env MODE=production yarn --cwd packages/client/main build",
     "package:client": "cross-env MODE=production yarn --cwd packages/client/main package",
+    "package:publish:client": "cross-env MODE=production yarn --cwd packages/client/main package:publish",
     "update-electron-vendors": "yarn --cwd packages/client/main update-electron-vendors",
     "commit": "npx git-cz",
     "release": "lerna version --conventional-commits"

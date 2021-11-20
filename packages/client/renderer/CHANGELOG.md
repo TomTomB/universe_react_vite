@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/TomTomB/universe/compare/v0.2.4...v0.2.5) (2021-11-20)
+
+
+### Bug Fixes
+
+* 🐛 get the ! back ([3d9a6f7](https://github.com/TomTomB/universe/commit/3d9a6f780511352935b8803b0e2ee1edda7e3177))
+
+
+
+
+
 ## [0.2.3](https://github.com/TomTomB/universe/compare/v0.2.2...v0.2.3) (2021-11-20)
 
 

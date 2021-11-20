@@ -1,6 +1,6 @@
 {
   "name": "@universe/client-main",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "main": "dist/index.cjs",
   "license": "MIT",
   "private": true,

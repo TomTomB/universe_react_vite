@@ -1,12 +1,4 @@
 const path = require('path');
-
-if (process.env.VITE_APP_VERSION === undefined) {
-  const now = new Date();
-  process.env.VITE_APP_VERSION = `${now.getUTCFullYear() - 2000}.${
-    now.getUTCMonth() + 1
-  }.${now.getUTCDate()}-${now.getUTCHours() * 60 + now.getUTCMinutes()}`;
-}
-
 const DIST_PATH = path.resolve(__dirname, '..', '..', '..', 'dist');
 
 /**
@@ -49,9 +41,6 @@ const config = {
       filter: ['**/*'],
     },
   ],
-  extraMetadata: {
-    version: process.env.VITE_APP_VERSION,
-  },
 };
 
 module.exports = config;

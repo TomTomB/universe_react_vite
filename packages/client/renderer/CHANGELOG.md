@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/TomTomB/universe/compare/v0.2.9...v0.2.10) (2021-11-20)
+
+
+### Bug Fixes
+
+* 🐛 i hate ci ([c41cded](https://github.com/TomTomB/universe/commit/c41cded8fc7caa81ded6c33f90d37d6c59901072))
+
+
+
+
+
 ## [0.2.9](https://github.com/TomTomB/universe/compare/v0.2.8...v0.2.9) (2021-11-20)
 
 

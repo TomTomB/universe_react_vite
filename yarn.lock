@@ -7540,7 +7540,7 @@ selenium-webdriver@^4.0.0-beta.2:
     tmp "^0.2.1"
     ws ">=7.4.6"
 
-semantic-release@^18.0.0:
+semantic-release@18.0.0:
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-18.0.0.tgz#b44b7101ed0525c041b984f74854852be67341cc"
   integrity sha512-/Szyhq5DTZCYry/aZqpBbK/kqv10ydn6oiiaYOXtPgDbAIkqidZcQOm+mfYFJ0sBTUaOYCKMlcPMgJycP7jDYQ==

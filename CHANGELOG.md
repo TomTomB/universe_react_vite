@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/TomTomB/universe/compare/v0.2.10...v0.2.11) (2021-11-20)
+
+
+### Bug Fixes
+
+* 🐛 kmspls ([934a90f](https://github.com/TomTomB/universe/commit/934a90f6da540dd8ab2fe0060714066702be9fba))
+
+
+
+
+
 ## [0.2.10](https://github.com/TomTomB/universe/compare/v0.2.9...v0.2.10) (2021-11-20)
 
 

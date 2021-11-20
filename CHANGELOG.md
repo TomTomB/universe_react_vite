@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.12](https://github.com/TomTomB/universe/compare/v0.2.11...v0.2.12) (2021-11-20)
+
+
+### Bug Fixes
+
+* 🐛 ci equals pain ([15dd242](https://github.com/TomTomB/universe/commit/15dd242f00d488c87e41d154d2f4ebefbd60e402))
+
+
+
+
+
 ## [0.2.11](https://github.com/TomTomB/universe/compare/v0.2.10...v0.2.11) (2021-11-20)
 
 

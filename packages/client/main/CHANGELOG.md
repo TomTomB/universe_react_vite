@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.1 (2021-11-20)
+
+
+### Bug Fixes
+
+* 🐛 add git config ([a871411](https://github.com/TomTomB/universe/commit/a87141135c5e34c111a368a4e97a47fd63c5a640))
+
+
+
+
+
 # 0.2.0 (2021-11-20)
 
 

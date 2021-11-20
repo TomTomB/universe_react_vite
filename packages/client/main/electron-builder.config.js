@@ -14,6 +14,14 @@ const DIST_PATH = path.resolve(__dirname, '..', '..', '..', 'dist');
  * @see https://www.electron.build/configuration/configuration
  */
 const config = {
+  productName: 'Universe',
+  appId: 'digital.bornholdt.Universe',
+  publish: {
+    provider: 'github',
+    owner: 'TomTomB',
+    repo: 'universe',
+    releaseType: 'release',
+  },
   directories: {
     output: '../../../dist/client/bin',
     buildResources: 'buildResources',

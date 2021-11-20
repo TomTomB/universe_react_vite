@@ -25,15 +25,21 @@ jobs:
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Install Node, NPM and Yarn
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: 16
-      #     cache: 'yarn'
+      - name: Install Node, NPM and Yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'yarn'
 
-      # - name: Install dependencies
-      #   run: |
-      #     yarn install --frozen-lockfile
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+      - name: Run Lerna
+        run: |
+          yarn release -y
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Publish releases
       #   env:

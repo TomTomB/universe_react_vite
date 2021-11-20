@@ -8,7 +8,7 @@ ReactDOM.render(
   <StrictMode>
     <Suspense fallback={<div>Loading... </div>}>
       <h1 style={{ color: 'white' }}>Such hacker such wow</h1>
-      <a href="https://google.de">Google it :-)</a>
+      <a href="https://google.de">Google it</a>
     </Suspense>
   </StrictMode>,
   document.getElementById('universe-app'),

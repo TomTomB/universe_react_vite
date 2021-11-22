@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.17](https://github.com/TomTomB/universe/compare/v0.2.16...v0.2.17) (2021-11-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency react-i18next to v11.14.3 ([79caf04](https://github.com/TomTomB/universe/commit/79caf04495dbea97cf8a8615ec84b6d0b15528cd))
+
+
+
+
+
 ## [0.2.16](https://github.com/TomTomB/universe/compare/v0.2.15...v0.2.16) (2021-11-22)
 
 **Note:** Version bump only for package @universe/client-renderer

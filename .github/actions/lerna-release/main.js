@@ -1,31 +1,29 @@
 // @ts-check
+/**
+ * Below is my way of checking if lerna did a release.
+ * I'm an absolute toast when it comes to github actions.
+ */
 
 const { execSync } = require('child_process');
-const { writeFileSync } = require('fs');
 
 const cwd = process.cwd();
 
 try {
-  const didRelease = false;
+  const lernaJsonBefore = require(`${cwd}/lerna.json`);
 
-  // load lerna.json sync
-  const lernaJson = require(`${cwd}/lerna.json`);
-
-  // update version
-  const version = lernaJson.version;
-  const versionAfter = `${version}-pre`;
-  lernaJson.version = versionAfter;
-
-  // write lerna.json sync
-  writeFileSync(`${cwd}/lerna.json`, JSON.stringify(lernaJson, null, 2));
+  execSync('yarn release -y');
 
   const lernaJsonAfter = require(`${cwd}/lerna.json`);
 
-  const stdo = execSync('ls');
+  const didRelease = lernaJsonBefore.version !== lernaJsonAfter.version;
 
-  console.log(lernaJson, lernaJsonAfter);
-
-  process.exit(1);
+  if (didRelease) {
+    console.log(
+      `A release was made. ${lernaJsonBefore.version} -> ${lernaJsonAfter.version}`,
+    );
+  } else {
+    console.log(`No release was made. ${lernaJsonBefore.version}`);
+  }
 
   process.stdout.write('::set-output name=did-release::' + didRelease + '\r\n');
 } catch (e) {

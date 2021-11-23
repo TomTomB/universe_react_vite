@@ -1,3 +1,5 @@
+// @ts-check
+
 const { writeFile } = require('fs/promises');
 const { execSync } = require('child_process');
 const electron = require('electron');

@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-
+// @ts-check
 const { createServer, build, createLogger } = require('vite');
 const electronPath = require('electron');
 const { spawn } = require('child_process');
 const path = require('path');
+const { writeFileSync } = require('fs-extra');
+const { copySync } = require('fs-extra');
 
 // The script gets started from packages/client/main
 const packagesPath = path.resolve(__dirname, '../..');
@@ -34,7 +36,7 @@ const stderrFilterPatterns = [
 /**
  *
  * @param {{name: string; configFile: string; writeBundle: import('rollup').OutputPlugin['writeBundle'] }} param0
- * @returns {import('rollup').RollupWatcher}
+ * @returns {Promise<import('rollup').RollupOutput | import('rollup').RollupOutput[] | import('rollup').RollupWatcher >}
  */
 const getWatcher = ({ name, configFile, writeBundle }) => {
   return build({
@@ -47,7 +49,7 @@ const getWatcher = ({ name, configFile, writeBundle }) => {
 /**
  * Start or restart App when source files are changed
  * @param {import('vite').ViteDevServer} viteDevServer
- * @returns {Promise<import('vite').RollupOutput | Array<import('vite').RollupOutput> | import('vite').RollupWatcher>}
+ * @returns {Promise<import('rollup').RollupOutput | import('rollup').RollupOutput[] | import('rollup').RollupWatcher >}
  */
 const setupMainPackageWatcher = (viteDevServer) => {
   // Write a value to an environment variable to pass it to the main process.
@@ -63,7 +65,7 @@ const setupMainPackageWatcher = (viteDevServer) => {
     prefix: '[main]',
   });
 
-  /** @type {ChildProcessWithoutNullStreams | null} */
+  /** @type {import('child_process').ChildProcessWithoutNullStreams | null} */
   let spawnProcess = null;
 
   return getWatcher({
@@ -96,7 +98,7 @@ const setupMainPackageWatcher = (viteDevServer) => {
 /**
  * Start or restart App when source files are changed
  * @param {import('vite').ViteDevServer} viteDevServer
- * @returns {Promise<import('vite').RollupOutput | Array<import('vite').RollupOutput> | import('vite').RollupWatcher>}
+ * @returns {Promise<import('rollup').RollupOutput | import('rollup').RollupOutput[] | import('rollup').RollupWatcher >}
  */
 const setupPreloadPackageWatcher = (viteDevServer) => {
   return getWatcher({
@@ -111,8 +113,6 @@ const setupPreloadPackageWatcher = (viteDevServer) => {
 };
 
 const writePackageJson = () => {
-  const { writeFileSync } = require('fs-extra');
-
   const packageJson = { main: 'main/index.cjs' };
 
   writeFileSync(
@@ -122,8 +122,6 @@ const writePackageJson = () => {
 };
 
 const buildSplash = () => {
-  const { copySync } = require('fs-extra');
-
   copySync(
     path.resolve(packagesPath, 'client/splash'),
     path.resolve(packagesPath, '../dist/client/splash'),

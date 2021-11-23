@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// @ts-check
+
 const { build } = require('vite');
 const { dirname } = require('path');
 const path = require('path');
@@ -27,6 +29,7 @@ const buildSplash = () => {
 
 /**
  * Run `vite build` for config file
+ * @param {string} configFile
  */
 const buildByConfig = (configFile) => build({ configFile, mode });
 (async () => {

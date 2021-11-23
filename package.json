@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "serve:client": "yarn --cwd packages/client/main start",
+    "pre-build:client": "node packages/client/scripts/sync-main-version-with-lerna.js",
     "build:client": "cross-env MODE=production yarn --cwd packages/client/main build",
     "package:client": "cross-env MODE=production yarn --cwd packages/client/main package",
     "package:publish:client": "cross-env MODE=production yarn --cwd packages/client/main package:publish",

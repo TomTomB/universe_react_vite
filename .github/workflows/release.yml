@@ -58,6 +58,10 @@ jobs:
         run: |
           yarn install --frozen-lockfile
 
+      - name: Sync main package.json version with lerna.json
+        run: |
+          yarn pre-build:client
+
       - name: Run Build
         run: |
           yarn build:client

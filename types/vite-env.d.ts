@@ -24,4 +24,7 @@ interface ImportMetaEnv {
   readonly VITE_RECAPTCHA_V3_KEY: string;
 
   readonly VITE_FIREBASE_EMULATOR_URL: string;
+
+  readonly VITE_SENTRY_URL: string;
+  
 }

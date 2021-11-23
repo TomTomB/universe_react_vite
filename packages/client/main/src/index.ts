@@ -3,6 +3,14 @@ import { join } from 'path';
 import { URL } from 'url';
 import { Logger } from './util/logger';
 import * as Protocol from './util/protocol';
+import { init as initSentryMain } from '@sentry/electron/dist/main';
+import { version } from '../../../../lerna.json';
+
+initSentryMain({
+  dsn: import.meta.env.VITE_SENTRY_URL,
+  enabled: app.isPackaged,
+  release: `v${version}`,
+});
 
 protocol.registerSchemesAsPrivileged([
   {
@@ -21,10 +29,7 @@ if (!isSingleInstance) {
   process.exit(0);
 }
 
-app.disableHardwareAcceleration();
-
-// Install "Vue.js devtools"
-if (import.meta.env.MODE === 'development') {
+if (import.meta.env.DEV) {
   app
     .whenReady()
     .then(() => import('electron-devtools-installer'))
@@ -102,11 +107,6 @@ const createWindow = async () => {
     }
   });
 
-  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    shell.openExternal(url);
-    return { action: 'deny' };
-  });
-
   const mainWindowUrl =
     import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL !== undefined
       ? import.meta.env.VITE_DEV_SERVER_URL
@@ -147,8 +147,26 @@ if (import.meta.env.PROD) {
 }
 
 app.on('web-contents-created', (_event, contents) => {
-  contents.on('will-redirect', (contentsEvent, navigationUrl) => {
-    shell.openExternal(navigationUrl);
-    contentsEvent.preventDefault();
+  contents.on('will-navigate', (event, url) => {
+    const allowedOrigins: ReadonlySet<string> = new Set<`https://${string}`>();
+    const { origin, hostname } = new URL(url);
+    const isDevLocalhost = import.meta.env.DEV && hostname === 'localhost';
+
+    if (!allowedOrigins.has(origin) && !isDevLocalhost) {
+      Logger.warn('Blocked navigating to an unallowed origin:', origin);
+      event.preventDefault();
+    }
+  });
+
+  contents.setWindowOpenHandler(({ url }) => {
+    const allowedOrigins: ReadonlySet<string> = new Set<`https://${string}`>();
+
+    const { origin } = new URL(url);
+    if (allowedOrigins.has(origin)) {
+      shell.openExternal(url);
+    } else {
+      Logger.warn('Blocked the opening of an unallowed origin:', origin);
+    }
+    return { action: 'deny' };
   });
 });

@@ -1,4 +1,12 @@
 import { contextBridge } from 'electron';
+import { init as initSentryRenderer } from '@sentry/electron/dist/renderer';
+import { version } from '../../../../lerna.json';
+
+initSentryRenderer({
+  dsn: import.meta.env.VITE_SENTRY_URL,
+  enabled: import.meta.env.PROD,
+  release: `v${version}`,
+});
 
 const apiKey = 'electron';
 /**

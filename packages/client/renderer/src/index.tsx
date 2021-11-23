@@ -7,8 +7,7 @@ import ReactDOM from 'react-dom';
 ReactDOM.render(
   <StrictMode>
     <Suspense fallback={<div>Loading... </div>}>
-      <h1 style={{ color: 'white' }}>Such hacker such wow!!!!</h1>
-      <a href="https://google.de">Google it</a>
+      <h1 style={{ color: 'white' }}>Universe</h1>
     </Suspense>
   </StrictMode>,
   document.getElementById('universe-app'),

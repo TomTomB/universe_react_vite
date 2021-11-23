@@ -5,7 +5,7 @@ const { execSync } = require('child_process');
 try {
   const didRelease = false;
 
-  const stdo = execSync('yarn lerna info');
+  const stdo = execSync('ls');
 
   console.log(didRelease, stdo.toString());
 

@@ -29,13 +29,9 @@ jobs:
         run: |
           yarn install --frozen-lockfile
 
-      - name: Run Lerna 2
+      - name: Run Lerna
         uses: ./.github/actions/lerna-release
         id: lerna-release
-
-      - name: Run Lerna
-        run: |
-          yarn release -y
 
   publish:
     needs: lerna

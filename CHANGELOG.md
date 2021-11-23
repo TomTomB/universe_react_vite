@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.18](https://github.com/TomTomB/universe/compare/v0.2.17...v0.2.18) (2021-11-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency i18next to v21.5.3 ([2b8d2d3](https://github.com/TomTomB/universe/commit/2b8d2d330ab487777923487db5220ee4c2738d01))
+
+
+
+
+
 ## [0.2.17](https://github.com/TomTomB/universe/compare/v0.2.16...v0.2.17) (2021-11-22)
 
 

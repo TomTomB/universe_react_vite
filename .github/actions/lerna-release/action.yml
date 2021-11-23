@@ -1,0 +1,8 @@
+name: 'Lerna release'
+description: 'Do a lerna version -y'
+outputs:
+  did-release:
+    description: 'Was a release created'
+runs:
+  using: 'node16'
+  main: 'main.js'

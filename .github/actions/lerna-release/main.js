@@ -2,12 +2,17 @@
 
 const { execSync } = require('child_process');
 
+const cwd = process.cwd();
+
 try {
   const didRelease = false;
 
+  // load lerna.json sync
+  const lernaJson = require(`${cwd}/lerna.json`);
+
   const stdo = execSync('ls');
 
-  console.log(didRelease, stdo.toString());
+  console.log(didRelease, lernaJson);
 
   process.exit(1);
 

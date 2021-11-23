@@ -54,7 +54,7 @@ const createWindow = async () => {
     backgroundColor: '#010a13',
     fullscreenable: false,
     roundedCorners: false,
-    // transparent: true,
+    transparent: true,
     center: true,
     frame: false,
     webPreferences: {

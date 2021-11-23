@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/TomTomB/universe/compare/v0.2.18...v0.3.0) (2021-11-23)
+
+
+### Features
+
+* 🎸 add sentry ([4934371](https://github.com/TomTomB/universe/commit/4934371131378fb7302e82b4326a25c9c1cee300))
+
+
+
+
+
 ## [0.2.18](https://github.com/TomTomB/universe/compare/v0.2.17...v0.2.18) (2021-11-23)
 
 

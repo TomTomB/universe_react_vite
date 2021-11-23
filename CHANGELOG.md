@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/TomTomB/universe/compare/v0.2.18...v0.3.0) (2021-11-23)
+
+
+### Bug Fixes
+
+* 🐛 make win transparent ([48dacd2](https://github.com/TomTomB/universe/commit/48dacd271662f0e6f52bf881a30de516c31645d7))
+* 🐛 update main version before electron build ([af9b90c](https://github.com/TomTomB/universe/commit/af9b90c01b0d78cbfaefdb578cfedc149546dccd))
+* 🐛 wrong node version for ci ([1e41886](https://github.com/TomTomB/universe/commit/1e4188686d5c60aca67ad7bc72b6313adc8e0771))
+
+
+### Features
+
+* 🎸 add sentry ([4934371](https://github.com/TomTomB/universe/commit/4934371131378fb7302e82b4326a25c9c1cee300))
+
+
+
+
+
 ## [0.2.18](https://github.com/TomTomB/universe/compare/v0.2.17...v0.2.18) (2021-11-23)
 
 

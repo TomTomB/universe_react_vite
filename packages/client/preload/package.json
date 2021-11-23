@@ -1,6 +1,6 @@
 {
   "name": "@universe/client-preload",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@sentry/electron": "2.5.4"

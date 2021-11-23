@@ -1,6 +1,6 @@
 {
   "name": "@universe/client-main",
-  "version": "0.2.14",
+  "version": "0.3.0",
   "main": "dist/index.cjs",
   "license": "MIT",
   "private": true,
@@ -12,9 +12,9 @@
     "update-electron-vendors": "node ../scripts/update-electron-vendors.js"
   },
   "dependencies": {
+    "@sentry/electron": "2.5.4",
     "electron-log": "4.4.1",
-    "electron-updater": "4.6.2",
-    "@sentry/electron": "2.5.4"
+    "electron-updater": "4.6.2"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "2.2.0",

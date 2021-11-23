@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/TomTomB/universe/compare/v0.2.18...v0.3.0) (2021-11-23)
+
+
+### Bug Fixes
+
+* 🐛 make win transparent ([48dacd2](https://github.com/TomTomB/universe/commit/48dacd271662f0e6f52bf881a30de516c31645d7))
+
+
+### Features
+
+* 🎸 add sentry ([4934371](https://github.com/TomTomB/universe/commit/4934371131378fb7302e82b4326a25c9c1cee300))
+
+
+
+
+
 ## [0.2.14](https://github.com/TomTomB/universe/compare/v21.11.20-1291...v0.2.14) (2021-11-20)
 
 

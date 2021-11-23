@@ -4,5 +4,5 @@ outputs:
   did-release:
     description: 'Was a release created'
 runs:
-  using: 'node16'
+  using: 'node12'
   main: 'main.js'

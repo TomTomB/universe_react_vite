@@ -9,6 +9,8 @@ try {
 
   console.log(didRelease, stdo.toString());
 
+  process.exit(1);
+
   process.stdout.write('::set-output name=did-release::' + didRelease + '\r\n');
 } catch (e) {
   console.error(e);

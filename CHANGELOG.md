@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/TomTomB/universe_react_vite/compare/v0.3.2...v0.3.3) (2021-11-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency immer to v9.0.7 ([a48ab2f](https://github.com/TomTomB/universe_react_vite/commit/a48ab2fa900a960d8b135623ef2c4541b56d903f))
+
+
+
+
+
 ## [0.3.2](https://github.com/TomTomB/universe_react_vite/compare/v0.3.1...v0.3.2) (2021-11-25)
 
 **Note:** Version bump only for package @universe/platform
